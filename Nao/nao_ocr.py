@@ -5,6 +5,7 @@ import numpy as np
 import sys
 
 
+
 class NaoOCR:
 
     def __init__(self):

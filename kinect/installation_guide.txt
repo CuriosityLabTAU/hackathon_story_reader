@@ -21,5 +21,12 @@ open PyCharm from the terminal with the command:
     >>roscore
     >>roslaunch my_skeleton_markers markers.launch
     >>rostopic echo skeleton
-1. run python skeleton_markers_reader.py
-2. run main.py
+2. run python skeleton_markers_reader.py
+3. TO START NAO ROS NODE:
+
+roslaunch nao_bringup nau_full.launch nao_ip:=<robot_ip> roscore_ip:=<roscore_ip>
+roslaunch nao_bringup nau_full.launch nao_ip:=192.168.0.100 roscore_ip:=132.66.50.145
+
+
+
+4. run main.py

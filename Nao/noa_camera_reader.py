@@ -14,29 +14,12 @@ class NaoListener():
         self.nao_frontcamera_listener()
 
     def callback(self, data):
-        # get the data (name, position):  the data is the massage
-        # kid_pose = KinectPose()
-        # kid_pose.update_position(data.position)
-        # message = str(kid_pose.poses_satisfied)
-        # pub = rospy.Publisher ('kinect_poses', String)
-        # #rospy.init_node('kinect_poses_publisher')
-        # rospy.loginfo(message)
-        # pub.publish(message)
-        # print(message)
         nao_png_string = np.fromstring(data.data, np.uint8)
         # np_img = np.reshape(np_arr,(data.height,data.width,3))
-        rospy.init_node('nao_png_publisher')
-        pub = rospy.Publisher('nao_png_string',nao_png_string)
+        # rospy.init_node('nao_png_publisher')
+        pub = rospy.Publisher('nao_png_string',String)
         rospy.loginfo(nao_png_string)
         pub.publish(nao_png_string)
-
-
-
-    # def kinect_listener():
-    #     #init a listener to kinect and
-    #     rospy.init_node('kinect_listener')
-    #     rospy.Subscriber("skeleton", Skeleton, callback)
-    #     rospy.spin()
 
     def nao_frontcamera_listener(self):
         #init a listener to kinect and

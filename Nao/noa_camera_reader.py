@@ -36,4 +36,5 @@ class NaoListener():
         rospy.Subscriber("nao_robot/camera/front/image_raw", Image, self.callback)
         rospy.spin()
 
+print ("rinat")
 l = NaoListener()

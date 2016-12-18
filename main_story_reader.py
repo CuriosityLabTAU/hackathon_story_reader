@@ -1,6 +1,6 @@
 import random
 import time
-from game.story_reader import Simon
+
 import os
 
 print('Dont forget to run:')

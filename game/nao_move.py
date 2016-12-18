@@ -122,33 +122,33 @@ class NaoNode:
         # fileId = self.audioProxy.post.playFile("../audio_files/bye.wav")
         self.audioProxy.playFile('/home/nao/naoqi/wav/' + filename,1.0,0.0)
 
-    def init_utterances(self):
-        self.utterances = {
-            'correct_pose': [
-                'after Hertzel says+ currect child move OR after NO Hertzel says+ child not moved.wav',
-                'after Hertzel says+ currect child move 2  OR after NO Hertzel says+ child not moved.wav',
-                'after Hertzel says+ currect child move 3 OR after NO Hertzel says+ child not moved',
-                'after Hertzel says+ currect child move 4 OR after NO Hertzel says+ child not moved'
-            ],
-            'got you': [
-                'after NO Hertzel says+ child move.wav'
-            ],
-            'didnt get it': [
-                'after Hertzel says+ wrong child move.wav',
-                'after Hertzel says+ wrong child move 2.wav',
-                'after Hertzel says+ wrong child move 3.wav',
-                'after Hertzel says+ wrong child move 4.wav'
-            ],
-            #'good job': [
-            #    'after Hertzel says+ currect child move OR after NO Hertzel says+ child not moved.wav',
-            #    'after Hertzel says+ currect child move 2  OR after NO Hertzel says+ child not moved.wav',
-            #    'after Hertzel says+ currect child move 3 OR after NO Hertzel says+ child not moved',
-            #    'after Hertzel says+ currect child move 4 OR after NO Hertzel says+ child not moved'
-            #]
-            'good job': [
-                'after NO Hertzel says+ child move.wav',
-                'after NO Hertzel says+ child move.wav',
-                'after NO Hertzel says+ child move.wav',
-                'after NO Hertzel says+ child move.wav'
-            ]
-        }
+    # def init_utterances(self):
+    #     self.utterances = {
+    #         'correct_pose': [
+    #             'after Hertzel says+ currect child move OR after NO Hertzel says+ child not moved.wav',
+    #             'after Hertzel says+ currect child move 2  OR after NO Hertzel says+ child not moved.wav',
+    #             'after Hertzel says+ currect child move 3 OR after NO Hertzel says+ child not moved',
+    #             'after Hertzel says+ currect child move 4 OR after NO Hertzel says+ child not moved'
+    #         ],
+    #         'got you': [
+    #             'after NO Hertzel says+ child move.wav'
+    #         ],
+    #         'didnt get it': [
+    #             'after Hertzel says+ wrong child move.wav',
+    #             'after Hertzel says+ wrong child move 2.wav',
+    #             'after Hertzel says+ wrong child move 3.wav',
+    #             'after Hertzel says+ wrong child move 4.wav'
+    #         ],
+    #         #'good job': [
+    #         #    'after Hertzel says+ currect child move OR after NO Hertzel says+ child not moved.wav',
+    #         #    'after Hertzel says+ currect child move 2  OR after NO Hertzel says+ child not moved.wav',
+    #         #    'after Hertzel says+ currect child move 3 OR after NO Hertzel says+ child not moved',
+    #         #    'after Hertzel says+ currect child move 4 OR after NO Hertzel says+ child not moved'
+    #         #]
+    #         'good job': [
+    #             'after NO Hertzel says+ child move.wav',
+    #             'after NO Hertzel says+ child move.wav',
+    #             'after NO Hertzel says+ child move.wav',
+    #             'after NO Hertzel says+ child move.wav'
+    #         ]
+    #     }

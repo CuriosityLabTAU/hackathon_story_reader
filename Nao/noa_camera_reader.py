@@ -3,7 +3,9 @@ import rospy
 # from kinect_pos import KinectPose
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
-
+import matplotlib.pyplot as plt
+import numpy as np
+import cv2
 
 # import nao_robot/camera/front/image_raw.msg
 class NaoListener():
@@ -21,8 +23,14 @@ class NaoListener():
         # rospy.loginfo(message)
         # pub.publish(message)
         # print(message)
-        print("type", type(data))
-        print(data)
+        nao_png_string = np.fromstring(data.data, np.uint8)
+        # np_img = np.reshape(np_arr,(data.height,data.width,3))
+        rospy.init_node('nao_png_publisher')
+        pub = rospy.Publisher('nao_png_string',nao_png_string)
+        rospy.loginfo(nao_png_string)
+        pub.publish(nao_png_string)
+
+
 
     # def kinect_listener():
     #     #init a listener to kinect and

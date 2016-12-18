@@ -28,7 +28,7 @@ change_page = False
 while(~change_page):
     story_reader.howie.play_file('next_page_reminder.wav')
     time.sleep(time_sleep)
-    change_page = False
+    change_page = True
 ## start reading text
 
 

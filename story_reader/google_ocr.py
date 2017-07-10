@@ -25,7 +25,8 @@ class OCRnode():
         if img_arr.shape[0] == (480*640*3):
             img_mat = np.reshape(img_arr,(480,640,3))
         else:
-            img_mat = np.reshape(img_arr,(240,320,3))
+            # img_mat = np.reshape(img_arr,(240,320,3))
+            img_mat = np.reshape(img_arr,(1280,960,3))
 
         vision_client = vision.Client(project='reading books')
 

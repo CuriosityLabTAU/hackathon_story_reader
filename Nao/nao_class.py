@@ -1,6 +1,7 @@
 import naoqi
 from naoqi import ALProxy
 import pyocr
+import time
 
 
 class NaoClass(object):
@@ -39,11 +40,33 @@ class NaoClass(object):
 
     def change_resolution(self):
         vision = ALProxy("ALVideoDevice", self.ip, self.port)
+        print(vision)
         resolution = vision.k4VGA
         colorSpace = vision.kYUVColorSpace
         fps = 20
 
+        nameId = vision.subscribe("python_GVM", resolution, colorSpace, fps)
+
+        print 'getting images in remote'
+        for i in range(0, 20):
+            print "getting image " + str(i)
+            vision.getImageRemote(nameId)
+            time.sleep(0.05)
+
+            vision.unsubscribe(nameId)
+
+
+        # subscribe top camera
+        AL_kTopCamera = 0
+        AL_k4VGA = 1  # 320x240
+        AL_kBGRColorSpace = 13
+        captureDevice = vision.subscribeCamera("test", AL_kTopCamera, AL_k4VGA, AL_kBGRColorSpace, 10)
+        a=0
+
+
+        fps = 20
+
     #def point(self, ):
 
-cl = NaoClass('192.168.0.103')
+cl = NaoClass('192.168.0.108')
 cl.change_resolution()

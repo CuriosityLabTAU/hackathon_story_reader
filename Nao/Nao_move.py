@@ -70,6 +70,10 @@ class StoryTellerNode():
         self.robot_publisher = rospy.Publisher('to_nao', String, queue_size=10)
         rospy.init_node('story_teller_node') #init a listener:
         rospy.Subscriber('nao_state', String, self.callback_nao_state)
+
+        rospy.Subscriber('ocr_data', String, callback=self.process_ocr)
+
+
         self.proceed=True
 
         #rospy.spin() #spin() simply keeps python from exiting until this node is stopped
@@ -82,28 +86,28 @@ class StoryTellerNode():
 
         message = '{\"action\":\"open_hand\", \"parameters\":[\"RHand\"]}'
         self.robot_publisher.publish(message)
-        effector = 'RArm'
-        fractionmaxspeed = 0.01
-        use = True
-        y_vec = np.linspace(0.20,-0.20,num=10)
-        z_vec = np.linspace(0.20,0.10,num=10)
-        for z in z_vec:
-            for y in y_vec:
-                vect = [0.25, y, z]
-                #tracker.pointAt(effector, vect, fractionmaxspeed, use)
-                message = {'action': 'point_at', 'parameters': [vect, fractionmaxspeed, use]}
-                self.robot_publisher.publish(json.dumps(message))
-                vect2 = [0.25, y, z]
-                message = {'action': 'look_at', 'parameters': [vect2, fractionmaxspeed, use]}
-                self.robot_publisher.publish(json.dumps(message))
-                #tracker.lookAt(vect2, fractionmaxspeed, use)
-
-                self.proceed=False
-                time.sleep(0.2)
-                while not self.proceed:
-                    pass
-
-                print (y,z)
+        # effector = 'RArm'
+        # fractionmaxspeed = 0.1
+        # use = True
+        # y_vec = np.linspace(0.20,-0.20,num=10)
+        # z_vec = np.linspace(0.20,0.10,num=10)
+        # for z in z_vec:
+        #     for y in y_vec:
+        #         vect = [0.25, y, z]
+        #         #tracker.pointAt(effector, vect, fractionmaxspeed, use)
+        #         message = {'action': 'point_at', 'parameters': [vect, fractionmaxspeed, use]}
+        #         self.robot_publisher.publish(json.dumps(message))
+        #         vect2 = [0.25, y, z]
+        #         message = {'action': 'look_at', 'parameters': [vect2, fractionmaxspeed, use]}
+        #         self.robot_publisher.publish(json.dumps(message))
+        #         #tracker.lookAt(vect2, fractionmaxspeed, use)
+        #
+        #         self.proceed=False
+        #         time.sleep(0.2)
+        #         # while not self.proceed:
+        #         #     pass
+        #
+        #         print (y,z)
         message = {'action': 'rest'}
         self.robot_publisher.publish(json.dumps(message))
 
@@ -115,6 +119,23 @@ class StoryTellerNode():
         except:
                print("callback_nao_state", data.data)
 
+    def process_ocr(self, data):
+        ocr_json = json.loads(data.data)
+        print(ocr_json)
+
+        # iterate the text
+        # for each word get x0,y0
+        # y1 = 3*x0+4
+        # z1 = 3*y0 -3
+        # effector = 'RArm'
+        # fractionmaxspeed = 0.1
+        # use = True
+        # vect = [0.25, y1, z1]
+        # message = {'action': 'point_at', 'parameters': [vect, fractionmaxspeed, use]}
+        # self.robot_publisher.publish(json.dumps(message))
+        # vect2 = [0.25, y, z]
+        # message = {'action': 'look_at', 'parameters': [vect2, fractionmaxspeed, use]}
+        # self.robot_publisher.publish(json.dumps(message))
 
 
 if __name__ == '__main__':

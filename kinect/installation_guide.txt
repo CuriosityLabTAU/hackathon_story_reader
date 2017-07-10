@@ -28,5 +28,9 @@ roslaunch nao_bringup nao_full.launch nao_ip:=<robot_ip> roscore_ip:=<roscore_ip
 roslaunch nao_bringup nao_full.launch nao_ip:=192.168.0.100 roscore_ip:=132.66.50.145
 
 
+FOR OCR
+sudo pip instal pyocr
+and then:
+http://stackoverflow.com/questions/31892413/no-tools-available-from-pyocr
 
 4. run main.py

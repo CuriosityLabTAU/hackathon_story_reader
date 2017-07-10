@@ -12,7 +12,7 @@ tracker = ALProxy("ALTracker", ip, port)
 
 fractionmaxspeed = 0.9
 use = True
-vect = [-1, 0, 0]
+vect = [1, 0, 0]
 # tracker.lookAt(vect, fractionmaxspeed, use)
 effector = "RArm"
-tracker.pointAt(effector,vect, fractionmaxspeed, use)
+tracker.pointAt(effector, vect, fractionmaxspeed, use)

@@ -1,9 +1,10 @@
 import rospy
 from sensor_msgs.msg import Image
+from PIL import Image as Image01
 import pyocr
 import numpy as np
 import sys
-
+import cv2.cv as cv
 
 
 class NaoOCR:
@@ -22,8 +23,8 @@ class NaoOCR:
 
     def process_ocr(self, data):
         img_arr = np.fromstring(data.data, np.uint8)
-        img_mat = np.reshape(img_arr, (data.height, data.width, 3))    # TODO: data.width, data.height
-        img_pil = Image.fromarray(img_mat)
+        img_mat = np.reshape(img_arr, (data.height, data.width, 3))
+        img_pil = Image01.fromarray(img_mat)
 
         self.txt = self.tool.image_to_string(
             img_pil,
@@ -42,10 +43,13 @@ class NaoOCR:
             lang="eng",
             builder=pyocr.builders.LineBoxBuilder()
         )
+        print(self.txt)
 
     def nao_front_camera_listener(self):
         rospy.init_node('nao_ocr')
         rospy.Subscriber("nao_robot/camera/front/image_raw", Image, self.process_ocr)
         rospy.spin()
 
+
 nao_ocr = NaoOCR()
+nao_ocr.process_ocr()

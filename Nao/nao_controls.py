@@ -1,6 +1,8 @@
 from naoqi import ALProxy
-ip = "172.16.102.10"
+
+ip = "192.168.0.104"
 port = 9559
+
 tts = ALProxy("ALTextToSpeech", ip, port)
 tts.say("hopa, keren, hopa, keren, hopa, hey hey hey")
 

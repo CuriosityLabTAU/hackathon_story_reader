@@ -44,19 +44,29 @@ class OCRnode():
             print('Texts:')
             msg_dict = {}
             msg_dict['text'] = texts[0].description
-            msg_dict['bounds'] = str(texts[0].bounds.vertices[0]) + ',' + \
-                str(texts[0].bounds.vertices[1]) + ',' + \
-                str(texts[0].bounds.vertices[2]) + ',' + \
-                str(texts[0].bounds.vertices[3])
+            msg_dict['bounds'] = \
+                str(texts[0].bounds.vertices[0].x_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[0].y_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[1].x_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[1].y_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[2].x_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[2].y_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[3].x_coordinate) + ',' + \
+                str(texts[0].bounds.vertices[3].y_coordinate)
 
             msg_dict['words'] = []
             for i in range(1, len(texts)):
                 word_dict = {}
                 word_dict['text'] = texts[i].description
-                word_dict['bounds'] = str(texts[i].bounds.vertices[0]) + ',' + \
-                    str(texts[i].bounds.vertices[1]) + ',' + \
-                    str(texts[i].bounds.vertices[2]) + ',' + \
-                    str(texts[i].bounds.vertices[3])
+                word_dict['bounds'] = \
+                    str(texts[i].bounds.vertices[0].x_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[0].y_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[1].x_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[1].y_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[2].x_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[2].y_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[3].x_coordinate) + ',' + \
+                    str(texts[i].bounds.vertices[3].y_coordinate)
                 msg_dict['words'].append(word_dict)
 
             self.pub.publish(json.dumps(msg_dict))
